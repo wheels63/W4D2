@@ -21,8 +21,6 @@ class Board
         # start_pos has to have our piece
         # end-pos has to meet the valid_pos? method
         # what is color?
-
-
     end
 
         # if empty, valid
