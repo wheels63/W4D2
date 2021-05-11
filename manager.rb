@@ -30,7 +30,7 @@ class Manager < Employee
         #     total_emp_sal += employee.dfs
         # end
         # @employees.summing_salaries
-        bonus = @employees.summing_salaries * multiplier
+        bonus = @employees.recursion.flatten.sum * multiplier
     end
 
     # def summing_salaries
@@ -40,14 +40,13 @@ class Manager < Employee
     #     self[0] + self[1..-1].summing_salaries
     # end
 
-    def recursion
-        sum = 0
-        return self.salary if self == nil
+    def self.recursion
+        sum = []
+        return [self.salary] if self == nil
         self.employees.each do |employee|
             sum += employee.recursion
         end
-        
-        
+        sum
     end
 
     # def dfs
