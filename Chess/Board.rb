@@ -1,8 +1,10 @@
 class Board
 
     def initialize
-        @rows = Array.new(8) {Array.new(8)}
         # @null_piece = maybe calling nullpiece class
+        @rows = Array.new(8) {Array.new(8, @null_piece)}
+        
+
     end
 
     def [](pos)
@@ -16,6 +18,11 @@ class Board
     end
 
     def move_piece(color, start_pos, end_pos)
+        # start_pos has to have our piece
+        # end-pos has to meet the valid_pos? method
+        # what is color?
+
+
     end
 
         # if empty, valid
@@ -32,4 +39,37 @@ class Board
         true
     end
 
+    def add_piece(piece, pos)
+        @rows[pos] = piece if valid_pos?(pos)
+    end
+
+    def checkmate?(color)
+
+    end
+
+    def in_check?(color)
+
+    end
+ 
+    def find_king(color) # finds the position of the king
+        @rows.each do |row|
+            row.each do |col|
+                [row,col] = pos
+                return pos if @rows[pos] == king.color # king.color might be an issue?
+            end
+        end
+    end
+
+    def pieces
+        # this is for adding pieces in default position
+        # to populate the board
+    end
+
+    def dup
+        @rows.dup
+    end
+
+    def move_piece!(color, start_pos, end_pos)
+
+    end
 end
