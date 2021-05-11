@@ -8,6 +8,11 @@ class Employee
         @boss.add_employee(self) if !boss.nil?
     end
 
+    def bonus(multiplier)
+        bonus = @salary * multiplier
+    end
+
+end
 =begin
 creating the tree
 ned manager instance does not have a boss
@@ -21,9 +26,3 @@ ned.employees.each
 dfs
 
 =end
-
-    def bonus(multiplier)
-        bonus = @salary * multiplier
-    end
-
-end

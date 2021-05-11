@@ -25,26 +25,30 @@ class Manager < Employee
     # darren.employ = [shawna, david]
 
     def bonus(multiplier)
-        total_emp_sal = 0
+        # total_emp_sal = 0
         # @employees.each do |employee|
         #     total_emp_sal += employee.dfs
         # end
-        employees.summing_salaries
-        bonus = total_emp_sal * multiplier
+        # @employees.summing_salaries
+        bonus = @employees.summing_salaries * multiplier
     end
 
-    def summing_salaries
-        return nil if self.length < 1
-        return self[0] if self.length == 1 
+    # def summing_salaries
+    #     return nil if self.length < 1
+    #     return self[0] if self.length == 1 
         
-        self[0] + summing_salaries(self[1..-1])
-    end
-
-    # def recursion
-    #     base case return salary if child = nil
-    #     self.employ.each 
-    #     sum += child.recursion
+    #     self[0] + self[1..-1].summing_salaries
     # end
+
+    def recursion
+        sum = 0
+        return self.salary if self == nil
+        self.employees.each do |employee|
+            sum += employee.recursion
+        end
+        
+        
+    end
 
     # def dfs
     #     return self.salary if self.nil?
@@ -62,6 +66,21 @@ darren = Manager.new("Darren", "TA Manager", 70000, ned)
 shawna = Employee.new("Shawna", "TA", 12000, darren)
 david = Employee.new("David", "TA", 10000, darren)
 
+# class Employee
+
+#     def initialize(name, title, salary, boss)
+#         @name = name
+#         @title = title
+#         @salary = salary
+#         @boss = boss
+#         @boss.add_employee(self) if !boss.nil?
+#     end
+
+#     def bonus(multiplier)
+#         bonus = @salary * multiplier
+#     end
+
+# end
 =begin 
 
 Name	Salary	    Title	    Boss
