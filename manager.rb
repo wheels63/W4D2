@@ -3,8 +3,13 @@ require_relative "employee"
 class Manager < Employee
 
     def initialize
-        employee = Employee.new(name, title, salary, boss)
+        super
         @employees = []
+    end
+
+    def populate(name, title, salary, boss)
+        employee = Employee.new(name, title, salary, boss)
+        @employees << employee
     end
 
     def bonus(multiplier)
@@ -15,4 +20,16 @@ class Manager < Employee
         bonus = total_emp_sal * multiplier
     end
 
+
 end
+
+
+=begin 
+
+Name	Salary	    Title	    Boss
+Ned	    \$1,000,000	Founder	    nil
+Darren	\$78,000	TA Manager	Ned
+Shawna	\$12,000	TA	        Darren
+David	\$10,000	TA	        Darren
+
+=end
