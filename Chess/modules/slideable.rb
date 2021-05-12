@@ -40,23 +40,41 @@ module Slideable
     def grow_unblocked_moves_in_dire(color, pos)
         dx = pos[0]
         dy = pos[1]
-        moves = []
+        horz_moves = []
+        diag_moves = []
 
         # until !(0...8).include?(dx) || !(0...8).include?(dy) || Board.grid[pos] != Board.null_piece && !color
             # - iterate horizontal_dirs, grab direction, add to x and y, individually
             # - shovel to moves array every time we increment or decrement x and y
         dup_x = dx.dup #3
         dup_y = dy.dup #5
+        new_pos = pos.dup
         horizontal_dirs.each do |dir| #(0,1)
-            until invalid
+            until self.board.valid_pos?(new_pos) || self.board[new_pos]
+                # if my color, we stop
+                # if not my color, take that spot (shovel that position to moves)
+                # if position is empty, take the spot
+
                 # start_pos = (3,5)
                 dup_x += dir[0] # 3 += 0 dup_x = 3
                 dup_y += dir[0] # 5 += 1 dup_y = 6
                 new_pos = [dup_x, dup_y] # (3,6)
-                moves << new_pos # [[4,5],[5,5],[6,5],[7,5],[3,6]]
+                
+                horz_moves << new_pos # [[4,5],[5,5],[6,5],[7,5],[3,6]]
             end #dup_x = 7 dup_y = 5
             dup_x = dx.dup #3
             dup_y = dy.dup #5
+        end
+
+        diagonal_dirs.each do |dir|
+            until invalid
+                dup_x += dir[0]
+                dup_y += dir[0]
+                new_pos = [dup_x, dup_y]
+                diag_moves << new_pos
+            end
+            dup_x = dx.dup
+            dup_y = dy.dup
         end
     end
 

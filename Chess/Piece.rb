@@ -5,6 +5,7 @@ class Piece
 
     Symbol
 
+    attr_reader :color, :board, :pos
     def initialize(color, board, pos)
         @color = color
         @board = board # why board? to know where your piece is in relation to other pieces
