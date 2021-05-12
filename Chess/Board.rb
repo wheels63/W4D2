@@ -111,7 +111,7 @@ class Board
     def dup
         @grid.dup
     end
-
+#testing repos
     def move_piece!(color, start_pos, end_pos) #mutate if move_piece without! doesnt cause check then call this
 
     end
