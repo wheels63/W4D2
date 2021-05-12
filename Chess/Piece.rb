@@ -5,10 +5,10 @@ class Piece
 
     Symbol
 
-    def initialize(color, board, array)
+    def initialize(color, board, pos)
         @color = color
-        @board = board # why board?
-        @pos = array
+        @board = board # why board? to know where your piece is in relation to other pieces
+        @pos = pos
     end
 
     def to_s(int)
