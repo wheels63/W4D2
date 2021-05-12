@@ -38,33 +38,25 @@ module Slideable
     # then shovel each into the moves array
 
     def grow_unblocked_moves_in_dire(color, pos)
-        pos[0] = dx
-        pos[1] = dy
-        
+        dx = pos[0]
+        dy = pos[1]
         moves = []
 
-        until !(0...8).include?(dx) || !(0...8).include?(dy) || Board.grid[pos] != Board.null_piece && !color
-            
+        # until !(0...8).include?(dx) || !(0...8).include?(dy) || Board.grid[pos] != Board.null_piece && !color
             # - iterate horizontal_dirs, grab direction, add to x and y, individually
             # - shovel to moves array every time we increment or decrement x and y
-            
-            i = 0
-
-            while i < #limiter
-                shovel_x = dx + i
-                shovel_y = dy + i
-
-                
-                # how to add x to dx
-
-                # how to add y to dy
-                # and then shovel to move arr
-            end
-
-            # - iterate diagonal_dirs, grab direction, add to x and y, individually
-            # - shovel to moves array every time we increment or decrement x and y
-            
-            moves << # each viable pos
+        dup_x = dx.dup #3
+        dup_y = dy.dup #5
+        horizontal_dirs.each do |dir| #(0,1)
+            until invalid
+                # start_pos = (3,5)
+                dup_x += dir[0] # 3 += 0 dup_x = 3
+                dup_y += dir[0] # 5 += 1 dup_y = 6
+                new_pos = [dup_x, dup_y] # (3,6)
+                moves << new_pos # [[4,5],[5,5],[6,5],[7,5],[3,6]]
+            end #dup_x = 7 dup_y = 5
+            dup_x = dx.dup #3
+            dup_y = dy.dup #5
         end
     end
 
